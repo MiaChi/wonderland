@@ -7,21 +7,19 @@ var b = [6,2,4,1,5,9];
 
 //var vector=[31,-41,59,26,-53,58,97,-93,-23,84];
 var v=[31,-41,59,26,-53,58,97,-93,-23,84];
-//maxSum(vector);
-var result=maxSumOpt(0,9);
-console.log(result);
+//maxSum(v);
+//var result=maxSumOpt(0,9);
+//console.log(result);
 
 //连续子向量最大和 O(n3)
 function maxSum(v){
 	var sum = 0;
 	var bigsum  = 0;
   for(var i=0;i<v.length;i++){
-    for(var j=i;j<v.length;j++){
 		  sum=0;
-			for(var k=i;k<j;k++){
-        sum += v[k]; 
-			}
-	bigsum = bigsum > sum ? bigsum:sum;
+    for(var j=i;j<v.length;j++){
+      sum += v[j]; 
+			bigsum = bigsum > sum ? bigsum:sum;
 		}	
 	}
 	console.log('max sum is:'+bigsum);
@@ -50,6 +48,28 @@ function max(a,b,c){
 	if(b>=a && b>=c){return b;};
 	if(a>=b && a>=c){return a;};
 }
+//优化 － 扫描
+//
+var out = maxSumOpt1(v);
+console.log(out);
+function maxSumOpt1(v){
+  var maxsofar = 0;
+	var maxendinghere = 0;
+	for(var i=0;i<v.length;i++){
+		var x = maxendinghere+v[i];
+    maxendinghere = x>0?x:0;
+		maxsofar = maxsofar>maxendinghere?maxsofar:maxendinghere;
+		//maxendinghere = max2(maxendinghere+v[i],0);
+		//maxsofar = max2(maxendinghere,maxsofar);
+		console.log(maxendinghere);
+	}
+	return maxsofar;
+}
+function max2(a,b){
+	if(b>=a){return b;};
+	if(a>=b){return a;};
+}
+
 function bubbleSort(b){
   for(var i=0;i<b.length;i++){
     for(var j=0;j<b.length-i;j++){
