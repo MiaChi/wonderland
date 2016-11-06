@@ -1,0 +1,52 @@
+.fancy {
+  width: 500px;
+  margin: 20px auto;
+  padding: 50px;
+  border-width: 10px;
+  background-color:red;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-column-count: 3;
+  -moz-column-gap: 1em;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 1em;
+  column-count: 3;
+  column-gap: 1em; 
+}
+.wrap {
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+}
+.container {
+  display:flex;
+  display:-webkit-flex;
+
+  flex-direction:row;
+  flex-wrap:wrap;
+  flex-flow:row wrap; /*flex-direction,flex-flow*/
+  justify-content:space-around;/*主轴对齐方式*/
+  align-items:flex-start;/*垂直对齐方式*/
+  align-content:flex-start;/*每行每列的对齐方式，只有一行时该属性无效*/
+}
+.elem {
+  background-color:yellow;
+  height:200px;
+  width:300px;
+  order:0;
+  /*flex-grow:0;
+  flex-shrink:1;
+  flex-basis:auto;
+  flex:0 1 auto;
+  align-self:flex-start;*/
+  margin-bottom:10px;
+  margin-right:5px;
+}
+.self {
+  align-self:flex-basis;
+  background-color:red;
+}
+.long{
+height:300px;
+}
